@@ -20,7 +20,7 @@ public class AllVideoGamesPage {
         this.js = (JavascriptExecutor) driver;
     }
 
-    private By AllVideoGames = By.linkText("All Video Games");
+    private By AllVideoGames = By.xpath("//*[@id=\"hmenu-content\"]/ul[32]/li[3]/a");
     private By VideoGames = By.linkText("Video Games");
     private By HamburgerMenu = By.id("nav-hamburger-menu");
     private By FreeShipingCheckBox = By.xpath("//*[@id=\"s-refinements\"]/div[2]/ul/li/span/a/div[1]/label/i");

@@ -10,7 +10,7 @@ public class LoginTest extends TestBase {
     String password = LoadPropertiesFile.userdata.getProperty("password");
 
     @Test(priority = 1)
-    public void Login() {
+    public void Login() throws InterruptedException {
         allVideoGamesPage = loginPage.Login(email, password);
     }
 

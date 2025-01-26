@@ -14,18 +14,19 @@ public class LoginPage {
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(250));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(1000));
     }
 
     private By Accounts_Lists = By.id("nav-link-accountList");
-    private By Email = By.id("ap_email");
+    private By Email = By.cssSelector("#ap_email");
     private By Continue = By.id("continue");
     private By Password = By.id("ap_password");
     private By SignInSubmit = By.id("signInSubmit");
 
-    public AllVideoGamesPage Login(String email, String password) {
+    public AllVideoGamesPage Login(String email, String password) throws InterruptedException {
         driver.findElement(Accounts_Lists).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(Email));
+        //Thread.sleep(500);
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(Email));
         driver.findElement(Email).sendKeys(email);
         driver.findElement(Continue).click();
         driver.findElement(Password).sendKeys(password);
