@@ -1,0 +1,1 @@
+{"uuid":"0527ea09-8193-42eb-8fe2-86e8031bfd45","name":"Foodics Task","children":["b7d5c61d-ea76-4dd3-ba22-3656e71780d0"],"befores":[{"name":"setUpEnvironment","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1737892608470,"stop":1737892611748}],"afters":[],"start":1737892608457,"stop":1737892621766}
