@@ -22,7 +22,7 @@ public class ShoppingCartPage {
     private By ProceedToCheckout = By.xpath("/html/body/div[1]/div[1]/div[4]/div[4]/div/div[1]/div[1]/div/form/div/div[3]/span[1]/span/span/input");
 
     public void ensureAllProductsInCart() {
-        driver.findElement(CartIcon).click();
+
         wait.until(ExpectedConditions.visibilityOfElementLocated(CartItems));
 
         List<WebElement> cartItems = driver.findElements(CartItems);

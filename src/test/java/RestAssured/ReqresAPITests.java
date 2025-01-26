@@ -54,6 +54,7 @@ public class ReqresAPITests {
                 .body("job", equalTo("Senior Developer"));
     }
 
+
     @Test
     @Order(3)
     public void retrieveUser() {
@@ -62,7 +63,14 @@ public class ReqresAPITests {
         }
 
         System.out.println("Retrieving user with ID: " + userId);
-        System.out.println("Requesting URL: " + BASE_URL);
+
+        // Add a delay before retrieving the user
+        try {
+            Thread.sleep(5000); // 5 seconds delay
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RuntimeException("Thread was interrupted: " + e.getMessage());
+        }
 
         Response response = given()
                 .baseUri(BASE_URL)
@@ -71,7 +79,12 @@ public class ReqresAPITests {
                 .when()
                 .get(BASE_URL + "/users/" + userId);
 
-        response.then().log().all();
+        response.then().log().all(); // Log the response details
+
+        // Log the status code and response body for debugging
+        if (response.getStatusCode() != 200) {
+            System.out.println("Failed to retrieve user: " + response.getStatusCode() + ", Response: " + response.asString());
+        }
 
         response.then()
                 .assertThat()

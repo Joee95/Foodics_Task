@@ -20,6 +20,8 @@ public class AddProductsLowerThan_1500_Page {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(250));
     }
 
+    private By CartIcon = By.id("nav-cart");
+
     public ShoppingCartPage AddProductsLowerThan_1500() {
         int maxPrice = 1500;
 
@@ -62,6 +64,8 @@ public class AddProductsLowerThan_1500_Page {
                 break;
             }
         }
+        wait.until(ExpectedConditions.visibilityOfElementLocated(CartIcon));
+        driver.findElement(CartIcon).click();
         return new ShoppingCartPage(driver);
     }
 }

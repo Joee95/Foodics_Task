@@ -31,9 +31,11 @@ public class CheckOutPage {
     private By BuildingNumberField = By.xpath("//input[@id='address-ui-widgets-enter-building-name-or-number']");
     private By CityField = By.xpath("//input[@id='address-ui-widgets-enterAddressCity']");
     private By DistrictField = By.xpath("//input[@id='address-ui-widgets-enterAddressDistrictOrCounty']");
-    private By DistrictDDL = By.xpath("//*[@id=\"address-ui-widgets-autoCompleteResult-0\"]");
+    private By DistrictDDL = By.xpath("//input[@id=\"address-ui-widgets-enterAddressDistrictOrCounty\"]");
     private By SaveAddressBtn = By.xpath("//span[@id='checkout-primary-continue-button-id-announce' and contains (. , 'Use this address')]");
-//    private By PaymentMethod = By.name("payment-method");
+    private By Heading = By.xpath("//h2[contains (. , 'Enter a new shipping address') ]");
+
+    //    private By PaymentMethod = By.name("payment-method");
 //    private By PlaceOrder = By.name("placeOrder");
 //    private By SubmitAddress = By.id("submitAddress");
 //    private By CashPaymentOption = By.xpath("//input[@value='Cash']");
@@ -55,13 +57,16 @@ public class CheckOutPage {
         // Building Number Field
         driver.findElement(BuildingNumberField).sendKeys(BuildingNumber);
         // City Field
-        driver.findElement(CityField).sendKeys("Cairo");
-        driver.findElement(CityField).sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
+        driver.findElement(CityField).click();
+        driver.findElement(CityField).sendKeys(City);
+        driver.findElement(CityField).sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER);
+        actions.moveToElement(driver.findElement(Heading)).click().build().perform();
         // District Field
         wait.until(ExpectedConditions.visibilityOfElementLocated(DistrictField));
-        driver.findElement(DistrictField).sendKeys("New Cairo City-Dar Masr");
-        actions.moveToElement(driver.findElement(DistrictDDL)).click().build().perform();
-        driver.findElement(DistrictField).sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
+        driver.findElement(DistrictDDL).click();
+        driver.findElement(DistrictField).sendKeys(District);
+        driver.findElement(DistrictField).sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER);
+        actions.moveToElement(driver.findElement(Heading)).click().build().perform();
         // Save Address Button
         wait.until(ExpectedConditions.visibilityOfElementLocated(SaveAddressBtn));
         driver.findElement(SaveAddressBtn).click();

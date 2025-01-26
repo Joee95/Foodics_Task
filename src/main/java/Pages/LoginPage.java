@@ -14,7 +14,7 @@ public class LoginPage {
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(500));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(250));
     }
 
     private By Accounts_Lists = By.id("nav-link-accountList");
@@ -25,7 +25,7 @@ public class LoginPage {
 
     public AllVideoGamesPage Login(String email, String password) {
         driver.findElement(Accounts_Lists).click();
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(Email));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(Email));
         driver.findElement(Email).sendKeys(email);
         driver.findElement(Continue).click();
         driver.findElement(Password).sendKeys(password);
