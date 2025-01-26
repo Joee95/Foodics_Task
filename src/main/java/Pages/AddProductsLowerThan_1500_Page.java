@@ -17,7 +17,7 @@ public class AddProductsLowerThan_1500_Page {
 
     public AddProductsLowerThan_1500_Page(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(250));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(1000));
     }
 
     private By CartIcon = By.id("nav-cart");

@@ -19,7 +19,7 @@ public class CheckOutPage {
 
     public CheckOutPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(500));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(2000));
         this.js = (JavascriptExecutor) driver;
         this.actions = new Actions(driver);
     }
@@ -42,7 +42,7 @@ public class CheckOutPage {
 //    private By SelectCashPaymentOption = By.xpath("//input[@value='Cash']");
 
     public void addAddressAndSelectPaymentMethod(String FullName, String MobileNumber, String StreetName, String BuildingNumber
-            , String City, String District) {
+            , String City, String District) throws InterruptedException {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(AddNewAddressBtn));
         driver.findElement(AddNewAddressBtn).click();
@@ -61,6 +61,7 @@ public class CheckOutPage {
         driver.findElement(CityField).sendKeys(City);
         driver.findElement(CityField).sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER);
         actions.moveToElement(driver.findElement(Heading)).click().build().perform();
+        Thread.sleep(1000);
         // District Field
         wait.until(ExpectedConditions.visibilityOfElementLocated(DistrictField));
         driver.findElement(DistrictDDL).click();
@@ -68,8 +69,8 @@ public class CheckOutPage {
         driver.findElement(DistrictField).sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER);
         actions.moveToElement(driver.findElement(Heading)).click().build().perform();
         // Save Address Button
-        wait.until(ExpectedConditions.visibilityOfElementLocated(SaveAddressBtn));
-        driver.findElement(SaveAddressBtn).click();
+        Thread.sleep(1000);
+        actions.moveToElement(driver.findElement(SaveAddressBtn)).click().build().perform();
 
         // Choose payment method ---> Not enabled on UI
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("payment-method"))); // Wait for payment options

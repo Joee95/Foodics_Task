@@ -15,7 +15,7 @@ public class CheckOutTest extends TestBase {
     String District = LoadPropertiesFile.userdata.getProperty("District");
 
     @Test(priority = 6)
-    public void CheckItemsInCart() {
+    public void CheckItemsInCart() throws InterruptedException {
         checkOutPage.addAddressAndSelectPaymentMethod
                 (FullName, MobileNumber, StreetName, BuildingNumber, City, District);
     }
